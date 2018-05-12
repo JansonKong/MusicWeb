@@ -1,19 +1,6 @@
 <template>
   <div>
-    <!-- <ul class="mod_top_subnav">
-      <li class="top_subnav__item" >
-       <router-link to="/" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==1}">首页</router-link>
-      </li>
-      <li class="top_subnav__item" >
-        <router-link  to="/singer" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==2}">歌手</router-link>
-      </li>
-      <li class="top_subnav__item" >
-        <router-link  to="/cd" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==3}">专辑</router-link>
-      </li>
-    <li class="top_subnav__item">
-      <router-link  to="" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==4}">排行版</router-link>
-    </li>
-  </ul>  -->
+    <v-nav></v-nav>
     <v-cd></v-cd>
     <!-- <v-event></v-event>
     <v-toplist></v-toplist>
@@ -26,6 +13,7 @@
   import event from './musicDis_c/event.vue'
   import topList from './musicDis_c/topList.vue'
   import taoList from './musicDis_c/taogeList.vue'
+  import nav from './public/navigation.vue'
   export default {
     data () {
       return {
@@ -36,7 +24,8 @@
       'v-cd': newCD,
       'v-event': event,
       'v-toplist': topList,
-      'v-taolist': taoList
+      'v-taolist': taoList,
+      'v-nav': nav
     },
     mounted() {
       this.$store.commit('changeLinkIndex', 1)

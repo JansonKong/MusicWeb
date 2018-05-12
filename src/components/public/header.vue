@@ -1,3 +1,4 @@
+//页面头部
 <template>
   <div>
     <div class="mod_header">
@@ -15,20 +16,6 @@
             <router-link class="top_nav_link" :class="{'top_nav_link--current': linkIndex==2}" to="/myMusic">我的音乐</router-link>
           </li>
         </ul>
-        <ul class="mod_top_subnav" v-show="mod_top_subnavIsShow"> 
-          <li class="top_subnav__item" >
-            <router-link to="/" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==1}">首页</router-link>
-          </li>
-          <li class="top_subnav__item" >
-            <router-link  to="/singer" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==2}">歌手</router-link>
-          </li>
-          <li class="top_subnav__item" >
-            <router-link  to="/cd" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==3}">专辑</router-link>
-          </li>
-          <li class="top_subnav__item">
-            <router-link  to="" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==4}">排行版</router-link>
-          </li>
-        </ul> 
         <div class="mod_top_search" @mouseout="schleave">
           <div class="mod_search_input">
             <input type="text" class="search_input__input" v-model="keyword" placeholder="先搜一下好吗？" @click="dropmenu">

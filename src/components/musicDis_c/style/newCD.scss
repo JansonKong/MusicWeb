@@ -14,12 +14,13 @@
         width: 193px;
         background-position: 0 0;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto; 
         height: 48px;
         background-image: url(https://y.gtimg.cn/mediastyle/yqq/img/index_tit.png?max_age=2592000&v=ea6515ebb82f7609712c02805e2abe9c);
       }
       .icon_txt {
         font: 0/0 a;
+        // color: #000;
       }
     }
     .index__line {
@@ -75,7 +76,8 @@
         display: inline-block;
         font-size: 16px;
         margin: 0 35px;
-        color: #fff;
+        color: black;
+        font-weight:bold;
         opacity: .5;
       }
       .index_tab__item:hover {

@@ -1,15 +1,20 @@
 <template>
   <div>
-    <a @click="test"></a>
+    <v-nav></v-nav>
+    <!-- <a @click="test"></a> -->
   </div>
 </template>
 
 <script>
+  import nav from "./public/navigation.vue";    
   export default {
     data() {
       return{
 
       }
+    },
+    components: {
+    "v-nav": nav
     },
     mounted() {
       this.$store.commit('changeTagIndex', 3)

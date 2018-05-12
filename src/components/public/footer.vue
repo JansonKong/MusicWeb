@@ -1,8 +1,9 @@
+//页面底端
 <template>
   <div class="footer">
     <div class="section_inner">
-      <div class="footer_info">
-        <div class="footer_download">
+      <!-- <div class="footer_info"> -->
+        <!-- <div class="footer_download">
           <h3 class="footer_tit">下载QQ音乐客户端</h3>
           <ul class="footer_download_list">
             <li class="footer_download_list__item">
@@ -109,11 +110,11 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <div class="footer_copyright">
-        <p><a href="">vue项目</a></p>
+        <p><a href="">J2EE大作业</a></p>
         <p><a href="">Copyright @ tencent</a></p>
-        <p><router-link to="/resume">jzxer</router-link>出品</p>
+        <p><router-link to="/resume">F5</router-link>出品</p>
       </div>
     </div>
   </div>

@@ -3,11 +3,11 @@ import Router from 'vue-router'
 import musicDis from '@/components/musicDis'
 import myMusic from '@/components/myMusic'
 import artList from '@/components/artList'
-import resume from '../pages/resume'
 import player from '../pages/player'
 import singer from '../components/singer'
 import cd from '../components/cd'
 import mv from '../components/mv'
+import top from '../components/top'
 
 
 Vue.use(Router)
@@ -30,11 +30,6 @@ export default new Router({
       component: artList
     },
     {
-      path: '/resume',
-      name: 'resume',
-      component: resume
-    },
-    {
       path: '/player:id',
       name: 'player',
       component: player
@@ -54,5 +49,10 @@ export default new Router({
       name: 'mv',
       component: mv
     },
+    {
+      path: '/top',
+      name: 'top',
+      component: top
+    }
   ]
 })
