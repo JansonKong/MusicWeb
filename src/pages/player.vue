@@ -64,7 +64,7 @@ import {mapState, mapAction} from 'vuex'
     },
     mounted() {
       this.id = this.$route.params.id
-      this.axios.get(`http://182.254.147.168:3000/music/url?id=${this.songList[this.id].id}`)
+      this.axios.get(`http://localhost:3000/music/url?id=${this.songList[this.id].id}`)
         .then(res => {
           // console.log(res.data.data[0].url);
           this.songUrl.push(res.data.data[0].url)

@@ -8,17 +8,14 @@
           </router-link>
         </h1>
         <ul class="mod_top_nav">
-          <li class="top_nav__item top_nav__item--room">
+          <li class="top_nav__item top_nav__item--room" @click="changeMod_top_subnavIsShow">
             <router-link class="top_nav_link" :class="{'top_nav_link--current': linkIndex==1}" to="/">音乐馆</router-link>
           </li>
-          <li class="top_nav__item top_nav__item--mine">
+          <li class="top_nav__item top_nav__item--mine" @click="changeMod_top_subnavIsShow">
             <router-link class="top_nav_link" :class="{'top_nav_link--current': linkIndex==2}" to="/myMusic">我的音乐</router-link>
           </li>
-          <li class="top_nav__item top_nav__item--down">
-            <router-link class="top_nav_link" :class="{'top_nav_link--current': linkIndex==3}" to="resume">关于我</router-link>
-          </li>
         </ul>
-        <ul class="mod_top_subnav">
+        <ul class="mod_top_subnav" v-show="mod_top_subnavIsShow"> 
           <li class="top_subnav__item" >
             <router-link to="/" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==1}">首页</router-link>
           </li>
@@ -28,10 +25,10 @@
           <li class="top_subnav__item" >
             <router-link  to="/cd" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==3}">专辑</router-link>
           </li>
-          <li class="top_subnav__item" >
-            <router-link  to="/mv" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==4}">MV</router-link>
+          <li class="top_subnav__item">
+            <router-link  to="" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==4}">排行版</router-link>
           </li>
-        </ul>
+        </ul> 
         <div class="mod_top_search" @mouseout="schleave">
           <div class="mod_search_input">
             <input type="text" class="search_input__input" v-model="keyword" placeholder="先搜一下好吗？" @click="dropmenu">
@@ -106,7 +103,8 @@ import {mapActions, mapState} from 'vuex'
       return {
         drop: false,
         keyword: '',
-        isLogin: false
+        isLogin: false,
+        mod_top_subnavIsShow: true
       }
     },
     mounted () {
@@ -125,7 +123,7 @@ import {mapActions, mapState} from 'vuex'
       search: function (keyword) {
         if (keyword.trim()) {
           console.log('获得数据')
-          this.axios.get(`http://182.254.147.168:3000/search?keywords=${keyword}`)
+          this.axios.get(`http://localhost:3000/search?keywords=${keyword}`)
             .then(res => {
               // console.log(res.data.result.songs);
               this.$store.commit('save_songList', res.data.result.songs)
@@ -146,8 +144,12 @@ import {mapActions, mapState} from 'vuex'
         this.drop = true
       },
       login: function() {
-        console.log(!this.$store.state.isLogin);
+        console.log(!this.$store.state.isLogin)
         this.isLogin =!this.$store.state.isLogin
+      },
+      changeMod_top_subnavIsShow: function(){
+        console.log('change')
+        this.mod_top_subnavIsShow = !this.mod_top_subnavIsShow
       }
     }
   }
