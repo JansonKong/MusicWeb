@@ -4,7 +4,7 @@
     <div class="section_inner" >
       <div class="index__hd">
         <h2 class="index__tit">
-          <i class="index__tit_sprite" style="background-position:0 -60px"></i>
+          <i class="index__tit_sprite"></i>
           <i class="icon_txt">新歌首发</i>
         </h2>
         <i class="index__line index__line--left"></i>
@@ -125,5 +125,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import "./style/newCD.scss";
+@import "./style/taogeList.scss";
 </style>

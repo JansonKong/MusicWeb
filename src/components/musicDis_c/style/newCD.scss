@@ -12,10 +12,15 @@
       text-align: center;
       .index__tit_sprite {
         width: 193px;
-        background-position: 0 0;
+        background-position: 0 -480px;
         display: block;
         margin: 0 auto; 
         height: 48px;
+        // font-style: normal;
+        // font-size: 30px;
+        // font-weight: blod;
+        // letter-spacing: 8px;
+        // font-family: Microsoft YaHei；
         background-image: url(https://y.gtimg.cn/mediastyle/yqq/img/index_tit.png?max_age=2592000&v=ea6515ebb82f7609712c02805e2abe9c);
       }
       .icon_txt {
