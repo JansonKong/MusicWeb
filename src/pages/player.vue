@@ -2,10 +2,10 @@
   <div class="player-cont">
     <div class="player-mask"></div>
     <div class="player-bg"
-     style="background: url(songList[id].album.picUrl);"></div>
+     <!-- style="background: url(songList[id].album.picUrl);"></div> -->
     <div class="mod-player">
       <div class="imgUrl">
-        <img :src="songList[id].album.picUrl" alt="">
+        <!-- <img :src="songList[id].album.picUrl" alt=""> -->
       </div>
       <div class="mod-footer">
         <a href="javascript:;" class="btn_big_prev"></a>
@@ -20,7 +20,7 @@
           <div class="play_music_time">
             <p class="startT">00:00</p>
             -
-            <p class="endT">{{(transformTime(songList[id].mMusic.playTime/1000))}}</p>
+            <!-- <p class="endT">{{(transformTime(songList[id].mMusic.playTime/1000))}}</p> -->
           </div>
           <div class="player_progress">
             <div class="player_progress__inner">

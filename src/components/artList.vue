@@ -37,7 +37,7 @@
                 </div>
               </div>
               <p class="songAlbum">{{item.album.name}}</p>
-              <p class="songTime">{{transformTime(item.mMusic.playTime/1000)}}</p>
+              <!-- <p class="songTime">{{transformTime(item.mMusic.playTime/1000)}}</p> -->
             </li>
           </ul>
         </div>
@@ -62,7 +62,7 @@ import {mapState} from 'vuex'
       ])
     },
     mounted () {
-      this.totalTime = this.transformTime(this.songList.Mmusic.play)
+      // this.totalTime = this.transformTime(this.songList.Mmusic.play)
     },
     methods: {
       iconShow: function () {
