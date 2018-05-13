@@ -1,5 +1,6 @@
 .mod_index--top {
-  background: #121212 url(https://y.gtimg.cn/mediastyle/yqq/img/bg_index_top2.jpg)
+  background: #f1efef 
+  // url(https://y.gtimg.cn/mediastyle/yqq/img/bg_index_top2.jpg)
     50% 0 no-repeat;
   .section_inner {
     height: 830px;
@@ -22,11 +23,15 @@
   .toplist__bg {
     transform: scale(1);
     transition: transform .75s;
-    position: absolute;
+    // text-align:center;
+    // position: center;
+    margin:0 auto;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 0px;
+    width: 74%;
     height: 567px;
+    // background-attachment:fixed;
+    // background-position:center;
     background-image: url(https://y.gtimg.cn/mediastyle/yqq/img/bg_index_top.jpg?max_age=2592000&v=2591d4829162dfda6b9112c771edda86);
   }
   .mod_cover__icon_play {

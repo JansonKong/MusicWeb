@@ -3,7 +3,6 @@
     <v-nav></v-nav>
     <v-taolist></v-taolist>
     <v-cd></v-cd>
-    <!-- <v-event></v-event> -->
     <v-toplist></v-toplist>
   </div>
 </template>

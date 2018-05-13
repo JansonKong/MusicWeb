@@ -11,7 +11,7 @@
         <router-link  to="/cd" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==3}">专辑</router-link>
       </li>
     <li class="top_subnav__item">
-      <router-link  to="/top" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==4}">排行版</router-link>
+      <router-link  to="/top" class="top_subnav__link" :class="{'top_subnav__link--current': tagLink==4}">排行榜</router-link>
     </li>
   </ul> 
   </div>

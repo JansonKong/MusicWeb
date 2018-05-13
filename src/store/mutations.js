@@ -7,7 +7,7 @@ export default{
     state.linkIndex = index
   },
   changeTagIndex(state, index) {
-    state.tagLink = index
+    state.tagLink = index  
   },
   save_singer(state, singer) {
     state.singer = singer

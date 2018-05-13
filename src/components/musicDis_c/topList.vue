@@ -1,5 +1,5 @@
 <template>
-  <!-- <div id="toplist_box">
+  <div id="toplist_box">
     <div class="mod_index mod_index--top mod_slide_box">
       <div class="section_inner">
         <div class="index__hd">
@@ -18,49 +18,6 @@
           <ul class="toplist__list">
             <li class="toplist__item toplist__item--pop mod_cover">
               <div class="toplist__bg"></div>
-              <i class="mod_cover__mask"></i>
-              <i class="mod_cover__icon_play js_play_toplist"></i>
-              <i class="toplist__line"></i>
-              <h3 class="toplist__hd">
-                <a href="#" class="toplist__tit js_toplist">
-                  <i class="toplist__tit_top">
-                    <i class="icon_txt">巅峰榜</i>
-                  </i>
-                  <div class="toplist__tit_pop">流行指数</div>
-                </a>
-              </h3>
-              <ul class="toplist__songlist">
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="toplist__item toplist__item--pop mod_cover">
-              <div class="toplist__bg" style="background-position: -299px 0"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
               <i class="toplist__line"></i>
@@ -103,7 +60,7 @@
               </ul>
             </li>
             <li class="toplist__item toplist__item--pop mod_cover">
-              <div class="toplist__bg" style="background-position: -599px 0"></div>
+              <div class="toplist__bg" style="background-position: -225px 0"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
               <i class="toplist__line"></i>
@@ -146,7 +103,50 @@
               </ul>
             </li>
             <li class="toplist__item toplist__item--pop mod_cover">
-              <div class="toplist__bg" style="background-position: -899px 0"></div>
+              <div class="toplist__bg" style="background-position: -450px 0"></div>
+              <i class="mod_cover__mask"></i>
+              <i class="mod_cover__icon_play js_play_toplist"></i>
+              <i class="toplist__line"></i>
+              <h3 class="toplist__hd">
+                <a href="#" class="toplist__tit js_toplist">
+                  <i class="toplist__tit_top">
+                    <i class="icon_txt">巅峰榜</i>
+                  </i>
+                  <div class="toplist__tit_pop">内地</div>
+                </a>
+              </h3>
+              <ul class="toplist__songlist">
+                <li class="toplist__song">
+                  <div class="toplist__number">1</div>
+                  <div class="toplist__songname">
+                    <a href="#" class="js_song">望</a>
+                  </div>
+                  <div class="toplist__artist">
+                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                  </div>
+                </li>
+                <li class="toplist__song">
+                  <div class="toplist__number">1</div>
+                  <div class="toplist__songname">
+                    <a href="#" class="js_song">望</a>
+                  </div>
+                  <div class="toplist__artist">
+                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                  </div>
+                </li>
+                <li class="toplist__song">
+                  <div class="toplist__number">1</div>
+                  <div class="toplist__songname">
+                    <a href="#" class="js_song">望</a>
+                  </div>
+                  <div class="toplist__artist">
+                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="toplist__item toplist__item--pop mod_cover">
+              <div class="toplist__bg" style="background-position: -670px 0"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
               <i class="toplist__line"></i>
@@ -192,8 +192,8 @@
         </div>
       </div>
     </div>
-  </div> -->
-  <div class="mod_index mod_index--top mod_slide_box mod_bg js_box" id="toplist_box" style="display:;">
+  </div>
+  <!-- <div class="mod_index mod_index--top mod_slide_box mod_bg js_box" id="toplist_box" style="display:;">
         <div class="section_inner">
             <div class="index__hd">
                 <h2 class="index__tit"><i class="icon_txt">排行榜</i></h2>
@@ -469,7 +469,7 @@
 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>
@@ -479,6 +479,6 @@
 </script>
 
 <style lang="scss" scoped>
-// @import "./style/toplist.scss";
-// @import "../public/style/public.scss";
+@import "./style/toplist.scss";
+@import "../public/style/public.scss";
 </style>
