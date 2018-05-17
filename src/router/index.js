@@ -8,6 +8,7 @@ import singer from '../components/singer'
 import cd from '../components/cd'
 import mv from '../components/mv'
 import top from '../components/top'
+import player_1 from '../components/public/player_1.vue'
 
 
 Vue.use(Router)
@@ -53,6 +54,11 @@ export default new Router({
       path: '/top',
       name: 'top',
       component: top
+    },
+    {
+      path: '/player_1',
+      name: 'player_1',
+      component: player_1
     }
   ]
 })

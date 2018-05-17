@@ -1,22 +1,19 @@
 <template>
   <div id="app">
-    <v-head></v-head>
-    <router-view></router-view>
-    <v-foot></v-foot>
+    <v-section></v-section>
+    <v-player></v-player>
   </div>
 </template>
 
 <script>
-import vHead from './components/public/header'
-import vFoot from './components/public/footer'
+import section from './components/public/section.vue'
+import player from './components/public/player.vue'
 
 export default {
   name: 'app',
   components: {
-    // 'v-head': vhead,
-    // 'v-foot': vfoot
-    vHead,
-    vFoot
+    'v-section': section,
+    'v-player': player
   },
   mounted () {
     console.log(this.$router)
