@@ -44,13 +44,10 @@ export default {
 .top_subnav__link {
   cursor: pointer;
 }
-.top_subnav__link--current {
+.top_subnav__link--current,.top_subnav__link--current:hover {
   color: #31c27c;
 }
-.top_subnav__link--current:hover {
-  color: #f2f2f2;
-  /* background-color: #31c27c; */
-}
+
 .top_subnav__link:hover {
   color: #31c27c;
   /* opacity: .9;
