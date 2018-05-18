@@ -101,9 +101,6 @@ import {mapActions, mapState} from 'vuex'
     computed: {
       linkIndex () {
         return this.$store.state.linkIndex
-      },
-      tagLink () {
-        return this.$store.state.tagLink
       }
     },
     methods: {
