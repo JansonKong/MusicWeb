@@ -19,7 +19,11 @@
 
 <script>
 export default {
-  
+  computed: {
+      tagLink () {
+        return this.$store.state.tagLink
+      }
+    },
 }
 </script>
 
@@ -38,14 +42,20 @@ export default {
   
 }
 .top_subnav__link {
-  cursor: auto;
+  cursor: pointer;
 }
-/* .top_subnav__link--current {
+.top_subnav__link--current {
   color: #31c27c;
+}
+.top_subnav__link--current:hover {
+  color: #f2f2f2;
+  /* background-color: #31c27c; */
 }
 .top_subnav__link:hover {
   color: #31c27c;
-} */
+  /* opacity: .9;
+  transition: .5s ease-out; */
+} 
 </style>
 
 
