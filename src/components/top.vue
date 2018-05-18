@@ -8,23 +8,23 @@
             <dt class="toplist_nav__tit">F5音乐巅峰榜</dt>
 
             <dd class="toplist_nav__item">
-              <a href="javascript:;" class="toplist_nav__link">巅峰榜&#183;热歌</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==1}" @click="changeTop(1)">巅峰榜&#183;热歌</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a href="javascript:;" class="toplist_nav__link">巅峰榜&#183;内地</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==2}" @click="changeTop(2)">巅峰榜&#183;内地</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a href="javascript:;" class="toplist_nav__link">巅峰榜&#183;港台</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==3}" @click="changeTop(3)">巅峰榜&#183;港台</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a href="javascript:;" class="toplist_nav__link">巅峰榜&#183;欧美</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==4}" @click="changeTop(4)">巅峰榜&#183;欧美</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a href="javascript:;" class="toplist_nav__link">巅峰榜&#183;日韩</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==5}" @click="changeTop(5)">巅峰榜&#183;日韩</a>
             </dd>
 
           </dl>
@@ -32,7 +32,7 @@
 
         <div class="mod_toplist">
           <div class="toplist__hd">
-            <h1 class="toplist__tit">巅峰榜&#183;热歌</h1>
+            <h1 class="toplist__tit">巅峰榜&#183;{{topName[topIndex]}}</h1>
           </div>
 
           <div class="mod_songlist">
@@ -125,11 +125,32 @@
             singer: '庄心妍',
             songTime: '4:30'
           }
+        ],
+        topLinkIndex: 1,
+        topName:[
+          '',
+          '热歌',
+          '内地',
+          '港台',
+          '欧美',
+          '日韩'
         ]
+      }
+
+    },
+    computed:{
+      topIndex () {
+        return this.topLinkIndex
       }
     },
     components: {
       "v-nav": nav
+    },
+    methods:{
+      changeTop: function(number){
+        this.topLinkIndex = number
+        // console.log(this.topLinkIndex)
+      }
     }
   }
 
@@ -262,10 +283,26 @@
   }
 
   .toplist_nav__link {
+    cursor: pointer;
     font-size: 15px;
     display: block;
     line-height: 22px;
     padding: 8px 17px
+  }
+
+  .toplist_nav__link:hover {
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    line-height: 22px;
+    padding: 8px 17px;
+    color: #31c27c;
+  }
+
+  .toplist_nav_link--current,.toplist_nav_link--current:hover{
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #31c27c;
   }
 
   .song_item_box {
