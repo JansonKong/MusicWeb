@@ -26,35 +26,17 @@
                   <i class="toplist__tit_top">
                     <i class="icon_txt">巅峰榜</i>
                   </i>
-                  <div class="toplist__tit_pop">热歌</div>
+                  <div class="toplist__tit_pop">内地</div>
                 </a>
               </h3>
               <ul class="toplist__songlist">
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
+                <li class="toplist__song" v-for="(item,index) in MAINLAND">
+                  <div class="toplist__number">{{index+1}}</div>
                   <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
+                    <a href="#" class="js_song">{{item.songName}}</a>
                   </div>
                   <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                    <a href="#" class="js_singers">{{item.singerName}}</a>
                   </div>
                 </li>
               </ul>
@@ -69,35 +51,17 @@
                   <i class="toplist__tit_top">
                     <i class="icon_txt">巅峰榜</i>
                   </i>
-                  <div class="toplist__tit_pop">新歌</div>
+                  <div class="toplist__tit_pop">港澳台</div>
                 </a>
               </h3>
               <ul class="toplist__songlist">
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
+                <li class="toplist__song" v-for="(item,index) in HONG_KONG_TAI_WAN">
+                  <div class="toplist__number">{{index+1}}</div>
                   <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
+                    <a href="#" class="js_song">{{item.songName}}</a>
                   </div>
                   <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                    <a href="#" class="js_singers">{{item.singerName}}</a>
                   </div>
                 </li>
               </ul>
@@ -112,35 +76,17 @@
                   <i class="toplist__tit_top">
                     <i class="icon_txt">巅峰榜</i>
                   </i>
-                  <div class="toplist__tit_pop">内地</div>
+                  <div class="toplist__tit_pop">日韩</div>
                 </a>
               </h3>
               <ul class="toplist__songlist">
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
+                <li class="toplist__song" v-for="(item,index) in JAPAN_KOREA">
+                  <div class="toplist__number">{{index+1}}</div>
                   <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
+                    <a href="#" class="js_song">{{item.songName}}</a>
                   </div>
                   <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                    <a href="#" class="js_singers">{{item.singerName}}</a>
                   </div>
                 </li>
               </ul>
@@ -159,31 +105,13 @@
                 </a>
               </h3>
               <ul class="toplist__songlist">
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
+                <li class="toplist__song" v-for="(item,index) in EUROPE_AMERICA">
+                  <div class="toplist__number">{{index+1}}</div>
                   <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
+                    <a href="#" class="js_song">{{item.songName}}</a>
                   </div>
                   <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
-                  </div>
-                </li>
-                <li class="toplist__song">
-                  <div class="toplist__number">1</div>
-                  <div class="toplist__songname">
-                    <a href="#" class="js_song">望</a>
-                  </div>
-                  <div class="toplist__artist">
-                    <a href="#" class="js_singers">张碧晨/赵丽颖</a>
+                    <a href="#" class="js_singers">{{item.singerName}}</a>
                   </div>
                 </li>
               </ul>
@@ -197,7 +125,43 @@
 
 <script>
   export default {
+    data(){
+      return{
+        MAINLAND: [],
+        HONG_KONG_TAI_WAN: [],
+        JAPAN_KOREA: [],
+        EUROPE_AMERICA: [],
+        serverUrl: "http://localhost:8080/MusicWeb",
+      }
+    },
+    methods:{
+      getData: function(){
+        var url_1 = this.serverUrl+'/song/lookUpRankByRegion?flag=0&region=1'
+        this.axios.get(url_1).then(res => {
+        this.MAINLAND = res.data
+        });
 
+        var url_2 = this.serverUrl+'/song/lookUpRankByRegion?flag=0&region=2'
+        this.axios.get(url_2).then(res => {
+        this.HONG_KONG_TAI_WAN = res.data
+        });
+
+        var url_3 = this.serverUrl+'/song/lookUpRankByRegion?flag=0&region=3'
+        this.axios.get(url_3).then(res => {
+        this.JAPAN_KOREA = res.data
+        });
+
+        var url_4 = this.serverUrl+'/song/lookUpRankByRegion?flag=0&region=4'
+        this.axios.get(url_4).then(res => {
+        this.EUROPE_AMERICA = res.data
+        });
+
+        console.log(EUROPE_AMERICA)
+      },
+    },
+    mounted() {
+      this.getData()
+    }
   }
 </script>
 

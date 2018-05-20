@@ -111,9 +111,8 @@ import {mapActions, mapState} from 'vuex'
             .then(res => {
               // console.log(res.data.result.songs);
               this.$store.commit('save_songList', res.data.result.songs)
-              this.$router.push({path: '/   ', query: {keyword: this.keyword}})
+              this.$router.push({path: '/artList', query: {keyword: this.keyword}})
             })
-
         } else {
           alert('请输入好吗?')
         }

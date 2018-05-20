@@ -8,9 +8,9 @@ import singer from '../components/singer'
 import cd from '../components/cd'
 import mv from '../components/mv'
 import top from '../components/top'
-import player_1 from '../components/public/player_1.vue'
-
-
+import forget from '..//components/myMusic-c/forget.vue'
+import unlogin from '..//components/myMusic-c/unlogin.vue'
+import myMusicInfo from '..//components/myMusic-c/myMusicInfo.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -56,9 +56,27 @@ export default new Router({
       component: top
     },
     {
-      path: '/player_1',
-      name: 'player_1',
-      component: player_1
+      path: '/forget',
+      name: 'forget ',
+      component: forget
+    },
+    {
+       path: '/unlogin',
+      name: '/unlogin ',
+      component: unlogin
+    },
+     {
+       path: '/myMusicInfo',
+      name: '/myMusicInfo',
+      component: myMusicInfo
+    },
+    {
+      path: '/myMusicInfo',
+      name: '/myMusicInfo',
+      component: myMusicInfo
     }
+
+    
+    
   ]
 })

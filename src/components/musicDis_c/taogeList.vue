@@ -15,28 +15,30 @@
         全部
         <i class="icon_index_arrow"></i>
       </a>
+      <div class="mod_index_tab">
+        <a  class="index_tab__item js_tab" v-for="(item,index) in navList" :key="index" @click="chooseTab(index)">{{item}}</a>
+      </div>
       <div class="mod_playlist mod_slide">
         <ul class="playlist__list slide__list" id="albumlist" style="left:-1200px;">
-          <li class="playlist__item slide__item" v-for="item in playList">
+          <li class="playlist__item slide__item" v-for="item in playList" @click="playSong(item)">
             <div class="playlist__item_box">
               <div class="playlist__cover mod_cover">
                 <a href="" class="js_album">
-                  <img :src='item.src' alt=""
-                    class="playlist__pic">
+                  <img :src='serverUrl+item.image' alt="" class="playlist__pic">
                   <i class="mod_cover__mask"></i>
                   <i class="mod_cover__icon_play js_play"></i>
                 </a>
               </div>
               <h4 class="playlist__title">
                 <span class="playlist__title_txt">
-                  <a href="" class="js_album">{{item.title}}</a>
+                  <a href="" class="js_album">{{item.songName}}</a>
                 </span>
                 <a href="#" class="btn_opera_menu js_albumlist_more">
                   <span class="icon_txt">更多</span>
                 </a>
               </h4>
               <div class="playlist__author">
-                <a href="#" class="js_singer">{{item.name}}</a>
+                <a href="#" class="js_singer">{{item.singerName}}</a>
               </div>
             </div>
           </li>
@@ -84,28 +86,11 @@
   export default {
     data () {
       return {
-        playList: [
-          {
-            src: 'https://p.qpic.cn/music_cover/oQ7QIr12iawo8AdKZPxIeuUneZQTUL489DXnNEkpG9Ltz39j6dBOsfw/300?n=1',
-            title: '望',
-            name: '张碧晨'
-          },
-          {
-            src: 'https://p.qpic.cn/music_cover/6aGRubo8UtU3O6E5dy98Jv2s6T2H1p2qSQK3icND00WznbssoCDn3bg/300?n=1',
-            title: '揭穿',
-            name: '黄子韬'
-          },
-          {
-            src: 'https://p.qpic.cn/music_cover/eO9YLkEHAnz3gntq1uUDL7Cq7yHGEsEPqLdwvcoNC8p4CZic8e6icb6w/300?n=1',
-            title: '金曲捞 第七期',
-            name: '金曲捞'
-          },
-          {
-            src: 'https://p.qpic.cn/music_cover/Q5MtyhqyicZRIFMHk9v3tflKkLNRVG0opUMd0rm0Oe6U3iam0Es6pd3Q/300?n=1',
-            title: '从心出发',
-            name: '庄心妍'
-          }
-        ]
+        navList: ['内地', '港澳台', '日韩', '欧美', '其他'],
+        playList: [],
+        picUrl: "/image/album/%E8%96%9B%E4%B9%8B%E8%B0%A6/%E7%BB%85%E5%A3%AB.jpg",
+        serverUrl: "http://localhost:8080/MusicWeb",
+        tab: 1
       }
     },
     methods: {
@@ -119,6 +104,29 @@
         const sab = document.querySelectorAll('.slide_action__btn')
         sab[0].style.transform = 'translatex(-100%)'
         sab[1].style.transform = 'translatex(100%)'
+      },
+      chooseTab: function(index){
+        this.tab = index+1
+        console.log(this.tab)
+        this.getData()
+      },
+      getData: function(){
+        var url = this.serverUrl+'/song/lookUpNewSongs?region='+this.tab
+        this.axios.get(url).then(res => {
+        this.playList = res.data
+        console.log(this.playList)  
+        });
+      },
+      playSong: function(item){
+        this.$store.state.currentSong = item
+      }
+    },
+    mounted() {
+      this.getData()
+    },
+    computed: {
+      tabLink () {
+        return this.tab
       }
     }
   }

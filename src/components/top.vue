@@ -8,23 +8,23 @@
             <dt class="toplist_nav__tit">F5音乐巅峰榜</dt>
 
             <dd class="toplist_nav__item">
-              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==1}" @click="changeTop(1)">巅峰榜&#183;热歌</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==1}" @click="changeTop(1)">巅峰榜&#183;内地</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==2}" @click="changeTop(2)">巅峰榜&#183;内地</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==2}" @click="changeTop(2)">巅峰榜&#183;日韩</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==3}" @click="changeTop(3)">巅峰榜&#183;港台</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==3}" @click="changeTop(3)">巅峰榜&#183;欧美</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==4}" @click="changeTop(4)">巅峰榜&#183;欧美</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==4}" @click="changeTop(4)">巅峰榜&#183;港澳台</a>
             </dd>
 
             <dd class="toplist_nav__item">
-              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==5}" @click="changeTop(5)">巅峰榜&#183;日韩</a>
+              <a class="toplist_nav__link" :class="{'toplist_nav_link--current': topIndex==5}" @click="changeTop(5)">巅峰榜&#183;其他</a>
             </dd>
 
           </dl>
@@ -51,7 +51,7 @@
             </div>
 
             <ul class="songlist__list">
-              <li class="song_item" v-for="(item,index) in songList">
+              <li class="song_item" v-for="(item,index)  in songList" :key="index">
                 <div class="song_item_box">
                   <el-row>
                     <el-col :span="2">
@@ -60,7 +60,7 @@
                     <el-col :span="16">
                       <el-row>
                         <el-col :span="4">
-                          <img :src='item.src' height="70" width="70" alt="" class="playlist__pic">
+                          <img :src='serverUrl+item.image' height="70" width="70" alt="" class="playlist__pic">
                         </el-col>
                         <el-col :span="10">
                           <h4>{{item.songName}}</h4>
@@ -78,17 +78,44 @@
                       </el-row>
                     </el-col>
                     <el-col :span="4">
-                      <h4>{{item.singer}}</h4>
+                      <h4>{{item.singerName}}</h4>
                     </el-col>
                     <el-col :span="2">
-                      <h4>{{item.songTime}}</h4>
+                      <h4>{{item.duration}}</h4>
                     </el-col>
                   </el-row>
                 </div>
               </li>
             </ul>
-            <el-pagination :page-size="20" :pager-count="11" layout="prev, pager, next" :total="1000">
-            </el-pagination>
+            <ul class="pagination">
+              <li>
+                <a href="#">«</a>
+              </li>
+              <li>
+                <a class="active" href="#">1</a>
+              </li>
+              <li>
+                <a href="#">2</a>
+              </li>
+              <li>
+                <a href="#">3</a>
+              </li>
+              <li>
+                <a href="#">4</a>
+              </li>
+              <li>
+                <a href="#">5</a>
+              </li>
+              <li>
+                <a href="#">6</a>
+              </li>
+              <li>
+                <a href="#">7</a>
+              </li>
+              <li>
+                <a href="#">»</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -101,33 +128,10 @@
   export default {
     data() {
       return {
-        songList: [{
-            src: 'https://p.qpic.cn/music_cover/oQ7QIr12iawo8AdKZPxIeuUneZQTUL489DXnNEkpG9Ltz39j6dBOsfw/300?n=1',
-            songName: '望',
-            singer: '张碧晨',
-            songTime: '4:30'
-          },
-          {
-            src: 'https://p.qpic.cn/music_cover/6aGRubo8UtU3O6E5dy98Jv2s6T2H1p2qSQK3icND00WznbssoCDn3bg/300?n=1',
-            songName: '揭穿',
-            singer: '黄子韬',
-            songTime: '4:30'
-          },
-          {
-            src: 'https://p.qpic.cn/music_cover/eO9YLkEHAnz3gntq1uUDL7Cq7yHGEsEPqLdwvcoNC8p4CZic8e6icb6w/300?n=1',
-            songName: '金曲捞 第七期',
-            singer: '金曲捞',
-            songTime: '4:30'
-          },
-          {
-            src: 'https://p.qpic.cn/music_cover/Q5MtyhqyicZRIFMHk9v3tflKkLNRVG0opUMd0rm0Oe6U3iam0Es6pd3Q/300?n=1',
-            songName: '从心出发',
-            singer: '庄心妍',
-            songTime: '4:30'
-          }
-        ],
+        serverUrl: "http://localhost:8080/MusicWeb",
+        songList: [],
         topLinkIndex: 1,
-        topName:[
+        topName: [
           '',
           '热歌',
           '内地',
@@ -138,18 +142,30 @@
       }
 
     },
-    computed:{
-      topIndex () {
+    computed: {
+      topIndex() {
         return this.topLinkIndex
       }
     },
     components: {
       "v-nav": nav
     },
-    methods:{
-      changeTop: function(number){
+    mounted() {
+      this.$store.commit('changeTagIndex', 4)
+      this.getData()
+    },
+    methods: {
+      changeTop: function (number) {
         this.topLinkIndex = number
+        this.getData()
         // console.log(this.topLinkIndex)
+      },
+      getData: function(){
+        var url_1 = this.serverUrl+'/song/lookUpRankByRegion?flag=1&region='+(this.topLinkIndex+1)
+        this.axios.get(url_1).then(res => {
+        console.log("result:"+res.data)
+        this.songList = res.data
+        });
       }
     }
   }
@@ -162,7 +178,7 @@
     padding-top: 60px;
     position: relative;
     width: 100%;
-    height: 800px;
+    height: 2000px;
     background-color: #f6f6f6;
   }
 
@@ -174,19 +190,20 @@
     position: absolute;
     top: 50px;
     left: 100px;
-    right: 100px; // height: 850px;
+    right: 100px;
+    //  height: 50000px;
   }
 
   .mod_page_nav {
     margin-bottom: 40px
   }
 
-  .song_menu{
+  .song_menu {
     float: left;
-    height: 74px;
-    // margin-left: 12px;
+    height: 74px; // margin-left: 12px;
     // margin-top: 7px;
   }
+
   .play_song {
     // border: 1px #31c27c;
     cursor: pointer;
@@ -196,12 +213,12 @@
     height: 36px;
     border: 1px solid rgba(202, 200, 200, 0.904);
     border-radius: 19px;
-      .fa-play{
-    // line-height: 36px;/*垂直居中关键*/
-    // text-align:center;
-    color: rgb(206, 206, 206);
-    padding: 11px;
-  }
+    .fa-play {
+      // line-height: 36px;/*垂直居中关键*/
+      // text-align:center;
+      color: rgb(206, 206, 206);
+      padding: 11px;
+    }
   }
 
   .play_song:hover {
@@ -213,15 +230,43 @@
     height: 36px;
     border: 1px solid rgba(111, 202, 69, 0.904);
     border-radius: 19px;
-          .fa-play{
-    // line-height: 36px;/*垂直居中关键*/
-    // text-align:center;
-    color: rgba(111, 202, 69, 0.904);
-    padding: 11px;
+    .fa-play {
+      // line-height: 36px;/*垂直居中关键*/
+      // text-align:center;
+      color: rgba(111, 202, 69, 0.904);
+      padding: 11px;
+    }
   }
+
+  ul.pagination {
+    display: inline-block;
+    padding: 100px 300px;
+    // margin: 0 auto;
   }
-  
-  .add_song{
+
+  ul.pagination li {
+    display: inline;
+  }
+
+  ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+  }
+
+  ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+  }
+
+  .add_song {
     cursor: pointer;
     float: left;
     margin-top: 15px;
@@ -230,12 +275,13 @@
     height: 36px;
     border: 1px solid rgba(202, 200, 200, 0.904);
     border-radius: 19px;
-    .fa-plus{
-    color: rgb(206, 206, 206);
-    padding: 11px;
+    .fa-plus {
+      color: rgb(206, 206, 206);
+      padding: 11px;
+    }
   }
-  }
-    .add_song:hover{
+
+  .add_song:hover {
     cursor: pointer;
     float: left;
     margin-top: 15px;
@@ -244,19 +290,16 @@
     height: 36px;
     border: 1px solid rgba(111, 202, 69, 0.904);
     border-radius: 19px;
-    .fa-plus{
-    color: rgba(111, 202, 69, 0.904);
-    padding: 11px;
-  }
-  }
-
-  // .fa-play{
+    .fa-plus {
+      color: rgba(111, 202, 69, 0.904);
+      padding: 11px;
+    }
+  } // .fa-play{
   //   // line-height: 36px;/*垂直居中关键*/
   //   // text-align:center;
   //   color: rgb(206, 206, 206);
   //   padding: 11px;
   // }
-
   // .fa-play:hove{
   //   // line-height: 36px;/*垂直居中关键*/
   //   // text-align:center;
@@ -299,7 +342,8 @@
     color: #31c27c;
   }
 
-  .toplist_nav_link--current,.toplist_nav_link--current:hover{
+  .toplist_nav_link--current,
+  .toplist_nav_link--current:hover {
     cursor: pointer;
     color: #ffffff;
     background-color: #31c27c;

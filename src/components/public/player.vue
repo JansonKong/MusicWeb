@@ -45,8 +45,7 @@
                 </el-col>
               </el-row>
               <div>
-                <h5>1234</h5>
-                <!-- <v-progress-bar>123</v-progress-bar> -->
+                <v-progress-bar @upPlay="onupplay"></v-progress-bar>
               </div>
             </el-col>
           </el-row>
@@ -98,7 +97,7 @@ export default {
   methods:{
     playSong: function(){
       let audio = this.$refs.audio
-      audio.src="http://dl.stream.qqmusic.qq.com/C400004buG7e02hMar.m4a?vkey=F56E40D11503A036CE1579788228913477197E27CE80EE8B520062B333A77744CF64FEDBE14DF8C0075E6A865EEAA6297F0897177626E83B&guid=2575115234&uin=995710545&fromtag=66"
+      audio.src="http://localhost:8080/MusicWeb/music/%E8%96%9B%E4%B9%8B%E8%B0%A6/%E7%BB%85%E5%A3%AB/%E7%BB%85%E5%A3%AB.mp3"
       if(!this.$store.state.playing)
         audio.play() 
       else
@@ -145,6 +144,7 @@ export default {
     }
     .song_information_top{
       padding-top:10px; 
+      height: 30px;
     }
   }
 
