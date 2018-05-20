@@ -1,106 +1,211 @@
 <template>
   <div class="player">
-    <div class="mini-player clearfix" >
-      <div class="play-config pull-left clearfix">
-        <div class="pull-left prev-song">
-          <i class="iconfont icon-prev-song"></i>
-        </div>
-        <div class="pull-left play-song" >
-          <i class="iconfont"></i>
-        </div>
-        <div class="pull-left next-song" >
-          <i class="iconfont icon-next-song"></i>
-        </div>
-        <div class="pull-right play-mode">
-          <i class="iconfont"></i>
-        </div>
-      </div>
-      <div class="play-intro clearfix">
-        <div class="pull-left thrum" v-lazy:background-image="thrumUrl"></div>
-        <div class="pull-left play-music">
-          <div class="play-music-intro" v-if="!isNull">
-            <span class="song-name">
-              哑巴
-              <!-- {{ currentSong.songname }} -->
-            </span>
-            <router-link 
-              class="singer-name" 
-              <!-- :to="{path: '/singer/' + currentSong.singer[0].mid}" -->
-            >
-              薛之谦
-                <!-- --{{ currentSong.singer[0].name }} -->
-            </router-link>
-          </div>
-          <div class="play-music-intro" v-else>聆听你的心动</div>
-          <div class="play-music-time" v-if="!isNull">
-            <!-- {{ filterTime(currentTime) }} / {{ filterTime(currentSong.interval) }} -->
-
-          </div>
-          <div class="play-music-time" v-else>00:00 / 00:00</div>
-          <v-progress-bar @upPlay="onupplay"></v-progress-bar>
-        </div>
-      </div>
-    </div>
-    <div 
-      class="spread-player"
-      v-if="!isNull"
-      :class="{'spread-player-up': fullScreen}"
-      :style="{height: spreadHeight}"
-    >
-      <div class="background" :class="background" :style="{'background-image': 'url('+ thrumUrl +')'}"></div>
-      <div class="back" @click="fullScreenToggle">
-        <i class="iconfont icon-prev"></i>
-      </div>
-      <!-- <div class="player-content">
-        <div class="player-bd">
-          <div class="player-mod">
-            <div class="mod-thrum" :style="{'background-image': 'url('+ thrumUrl +')'}"></div>
-            <div class="name">{{ currentSong.songname }}</div>
-            <div class="info">
-              <router-link 
-                :to="{path: '/singer/' + currentSong.singer[0].mid}"
-              >
-                歌手: {{ currentSong.singer[0].name }}
-              </router-link>
-              <router-link :to="{path: '/album/detail/' + currentSong.albumid}">专辑: {{ currentSong.albumname }}</router-link>
-            </div>
-            <div class="lyric-wrap" v-if="currentLyric">
-              <div class="lyric-box" v-iscroll="getIscroll">
-                <div 
-                  class="lyric-info" 
-                  ref="lyricInfo" 
-                  v-if="currentLyric.lines.length > 0">
-                  <p 
-                    v-for="(item, index) in currentLyric.lines"
-                    :key="index"
-                    ref="line" 
-                    :class="{on: currentLineNum === index}"
-                    v-html="item.txt"
-                  >
-                  </p>
-                </div>
-                <div class="lyric-info lyric-default" ref="lyricInfo" v-else>
-                  此歌曲为没有填词的纯音乐
-                </div>
+    <el-row>
+      <el-col :span="4">
+        <div class="song_control">
+          <el-row>
+            <el-col :span="10">
+              <div class="player_pre_song">
+                <i class="fa fa-step-backward fa-2x" aria-hidden="true"></i>
               </div>
-            </div>
-          </div> 
+            </el-col>
+            <el-col :span="4">
+              <div class="player_play_song" @click="playSong">
+                <i :class="playIcon" aria-hidden="true"></i>
+              </div>
+            </el-col>
+            <el-col :span="10">
+              <div class="player_next_song">
+                <i class="fa fa-step-forward fa-2x" aria-hidden="true"></i> 
+              </div>
+            </el-col>
+          </el-row>
         </div>
-      </div>-->
-    </div>
+      </el-col>
+      <el-col :span="20">
+        <div class="song_information">
+          <el-row>
+            <el-col :span="2">
+              <img :src='songPlayNow.src' height="40" width="40" alt="" class="song_information__pic">
+            </el-col>
+            <el-col :span="16">
+              <el-row class="song_information_top">
+                <el-col :span="1">
+                  <div class="song_information_songName">{{songPlayNow.songName}}</div>
+                </el-col>
+                <el-col :span="19">
+                  <div class="song_information_singer">
+                    {{songPlayNow.singer}}
+                  </div>
+                </el-col>
+                <el-col :span="4">
+                  <div class="song_information_singer">
+                    {{'00:00/'+songPlayNow.songTime}}
+                  </div>
+                </el-col>
+              </el-row>
+              <div>
+                <h5>1234</h5>
+                <!-- <v-progress-bar>123</v-progress-bar> -->
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-col>
+    </el-row>
     <audio 
       ref="audio" 
-      <!-- @canplay="ready" 
-      @error="error" 
-      @timeupdate="timeupdate"
-      @ended="end" -->
+      @ended="end"
     ></audio>
   </div>
 </template>
 
+<script>
+import progressBar from "./progress-bar";
+export default {
+  data() {
+    return{
+      spreadHeight: 0,
+      songReady: false,
+      currentTime: 0,
+      currentLyric: null,
+      currentLineNum: 0,
+      currentLineOffsetY: 0,
+      currentSong:{
+        songID:1,
+        songName: 'Welcome To New York',
+        albumID: 1,
+        singerID: 1,
+        playCount: 0,
+        lyrics: 'Welcome To New York.txt',
+        duration: '03:32',
+        image: 'https://p.qpic.cn/music_cover/oQ7QIr12iawo8AdKZPxIeuUneZQTUL489DXnNEkpG9Ltz39j6dBOsfw/300?n=1',
+        language: '英语',
+        url: 'http://dl.stream.qqmusic.qq.com/C400004buG7e02hMar.m4a?vkey=F56E40D11503A036CE1579788228913477197E27CE80EE8B520062B333A77744CF64FEDBE14DF8C0075E6A865EEAA6297F0897177626E83B&guid=2575115234&uin=995710545&fromtag=66',
+        albumName: '1989',
+        singerName: 'Taylor Swift'
+      }
+    }
+  },
+  computed: {
+    songPlayNow() {
+      return this.$store.state.songPlayNow
+    },
+    playIcon () {
+      return !this.$store.state.playing ? 'fa fa-play fa-2x' : 'fa fa-pause fa-2x'
+    },
+  },
+  methods:{
+    playSong: function(){
+      let audio = this.$refs.audio
+      audio.src="http://dl.stream.qqmusic.qq.com/C400004buG7e02hMar.m4a?vkey=F56E40D11503A036CE1579788228913477197E27CE80EE8B520062B333A77744CF64FEDBE14DF8C0075E6A865EEAA6297F0897177626E83B&guid=2575115234&uin=995710545&fromtag=66"
+      if(!this.$store.state.playing)
+        audio.play() 
+      else
+        audio.pause()
+      this.$store.state.playing = !this.$store.state.playing
+    },
+    end: function(){
+      this.playSong
+    }
+  },
+  components:{
+    'v-progress-bar': progressBar
+  }
+}
+</script>
+
 <style lang="scss" scoped>
-  @import '~@/assets/scss/variable';
-  @import '~@/assets/scss/mixin';
-  @import './style/player.scss';
+  // @import '~@/assets/scss/variable';
+  // @import '~@/assets/scss/mixin';
+  // @import './style/player.scss';
+  .player {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #ececec;
+
+  }
+  
+
+  .song_control{
+    height: 60px;
+    background-color:#575757;
+  }
+
+  .song_information{
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    .song_information__pic{
+      padding-top: 10px;
+      padding-left: 40px;
+    }
+    .song_information_top{
+      padding-top:10px; 
+    }
+  }
+
+  .player_pre_song{
+    cursor: pointer;
+    padding-top: 15px;
+    padding-left: 40px;
+    .fa-step-backward{
+      color: #cecccc;
+    }
+  }
+
+  .player_pre_song:hover{
+    cursor: pointer;
+    padding-top: 15px;
+    padding-left: 40px;
+    .fa-step-backward{
+      color: #ffffff;
+    }
+  }
+
+  .player_play_song{
+    cursor: pointer;
+    padding-top: 15px;
+    // padding-left: 20px;
+    .fa-play{
+      color: #cecccc;
+    }
+    .fa-pause{
+      color: #cecccc;
+    }
+  }
+
+  .player_play_song:hover{
+    cursor: pointer;
+    padding-top: 15px;
+    // padding-left: 20px;
+    .fa-play{
+      color: #ffffff;
+    }
+    .fa-pause{
+      color: #ffffff;
+    }
+  }
+
+  .player_next_song{
+    cursor: pointer;
+    padding-top: 15px;
+    padding-left: 20px;
+    .fa-step-forward{
+      color: #cecccc;
+    }
+  }
+
+  .player_next_song:hover{
+    cursor: pointer;
+    padding-top: 15px;
+    padding-left: 20px;
+    .fa-step-forward{
+      color: #ffffff;
+    }
+  }
 </style>
 
