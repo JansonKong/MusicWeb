@@ -23,7 +23,7 @@
           <li class="playlist__item slide__item" v-for="item in playList" @click="playSong(item)">
             <div class="playlist__item_box">
               <div class="playlist__cover mod_cover">
-                <a href="" class="js_album">
+                <a  class="js_album">
                   <img :src='serverUrl+item.image' alt="" class="playlist__pic">
                   <i class="mod_cover__mask"></i>
                   <i class="mod_cover__icon_play js_play"></i>

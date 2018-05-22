@@ -156,7 +156,7 @@
         this.EUROPE_AMERICA = res.data
         });
 
-        console.log(EUROPE_AMERICA)
+        console.log(this.EUROPE_AMERICA)
       },
     },
     mounted() {

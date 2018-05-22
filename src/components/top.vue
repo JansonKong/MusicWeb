@@ -51,7 +51,7 @@
             </div>
 
             <ul class="songlist__list">
-              <li class="song_item" v-for="(item,index)  in songList" :key="index">
+              <li class="song_item" v-for="(item,index)  in songList" :key="index" @click="playSong(item)">
                 <div class="song_item_box">
                   <el-row>
                     <el-col :span="2">
@@ -166,6 +166,9 @@
         console.log("result:"+res.data)
         this.songList = res.data
         });
+      },
+      playSong: function(item){
+        this.$store.state.currentSong = item
       }
     }
   }

@@ -75,6 +75,17 @@ export default {
         prefix(this.$refs.progressBtn, `translateX(${offset}px)`)
       }
     },
+    watch: {
+      percent (newPercent) {
+        if (newPercent >= 0 && !this.move.init) {
+          let progressWidth = this.$refs.progressBar.clientWidth
+          let offsetWidth = newPercent * progressWidth
+          if (!this.isNull) {
+            this._calcOffset(offsetWidth)
+          }
+        }
+      }
+    }
 }
 </script>
 
