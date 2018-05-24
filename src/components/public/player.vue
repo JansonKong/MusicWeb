@@ -134,7 +134,7 @@
     },
     methods: {
       preSong: function(){
-        if(this.$store.state.currentIndex > 1){
+        if(this.$store.state.currentIndex > 0){
           this.$store.state.currentIndex = this.$store.state.currentIndex - 1
           this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
         }

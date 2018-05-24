@@ -124,7 +124,6 @@
         this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
       },
       playAlbum: function(albums){
-        // this.$store.state.playList = []
         this.$store.state.playList = albums
         this.$store.state.currentIndex = 0
         this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
