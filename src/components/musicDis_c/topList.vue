@@ -10,13 +10,13 @@
           <i class="index__line index__line--left"></i>
           <i class="index__line index__line--right"></i>
         </div>
-        <a href="#" class="index__more index__more--white">
+        <!-- <a href="#" class="index__more index__more--white">
           全部
           <i class="icon_index_arrow"></i>
-        </a>
+        </a> -->
         <div class="mod_toplist">
           <ul class="toplist__list">
-            <li class="toplist__item toplist__item--pop mod_cover">
+            <li class="toplist__item toplist__item--pop mod_cover" @click="playAlbum(MAINLAND)">
               <div class="toplist__bg"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
@@ -41,7 +41,7 @@
                 </li>
               </ul>
             </li>
-            <li class="toplist__item toplist__item--pop mod_cover">
+            <li class="toplist__item toplist__item--pop mod_cover" @click="playAlbum(HONG_KONG_TAI_WAN)">
               <div class="toplist__bg" style="background-position: -225px 0"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
@@ -66,7 +66,7 @@
                 </li>
               </ul>
             </li>
-            <li class="toplist__item toplist__item--pop mod_cover">
+            <li class="toplist__item toplist__item--pop mod_cover" @click="playAlbum(JAPAN_KOREA)">
               <div class="toplist__bg" style="background-position: -450px 0"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
@@ -91,7 +91,7 @@
                 </li>
               </ul>
             </li>
-            <li class="toplist__item toplist__item--pop mod_cover">
+            <li class="toplist__item toplist__item--pop mod_cover" @click="playAlbum(EUROPE_AMERICA)">
               <div class="toplist__bg" style="background-position: -670px 0"></div>
               <i class="mod_cover__mask"></i>
               <i class="mod_cover__icon_play js_play_toplist"></i>
@@ -158,6 +158,18 @@
 
         console.log(this.EUROPE_AMERICA)
       },
+      playSong: function(item){
+        this.$store.state.playList = []
+        this.$store.state.playList.push(item)
+        this.$store.state.currentIndex = 0
+        this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
+      },
+      playAlbum: function(albums){
+        // this.$store.state.playList = []
+        this.$store.state.playList = albums
+        this.$store.state.currentIndex = 0
+        this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
+      }
     },
     mounted() {
       this.getData()

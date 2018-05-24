@@ -117,10 +117,6 @@ export default {
         		done();
                this.activeName='first';
         },
-		handleClick:function(tab, event) {
-			console.log(tab, event);
-
-		},
 		login:function(form){
             
              this.axios.get('http://localhost:8080/MusicWeb/user/checkUserIDExisted',{

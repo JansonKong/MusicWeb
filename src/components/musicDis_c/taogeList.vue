@@ -10,11 +10,11 @@
         <i class="index__line index__line--left"></i>
         <i class="index__line index__line--right"></i>
       </div>
-      <a href="y.qq.com/portal/album_lib.html#stat=y_new.index.album.more"
+      <!-- <a href="y.qq.com/portal/album_lib.html#stat=y_new.index.album.more"
         class="index__more index__more--white js_album_more">
         全部
         <i class="icon_index_arrow"></i>
-      </a>
+      </a> -->
       <div class="mod_index_tab">
         <a  class="index_tab__item js_tab" v-for="(item,index) in navList" :key="index" @click="chooseTab(index)">{{item}}</a>
       </div>
@@ -118,7 +118,16 @@
         });
       },
       playSong: function(item){
-        this.$store.state.currentSong = item
+        this.$store.state.playList = []
+        this.$store.state.playList.push(item)
+        this.$store.state.currentIndex = 0
+        this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
+      },
+      playAlbum: function(albums){
+        // this.$store.state.playList = []
+        this.$store.state.playList = albums
+        this.$store.state.currentIndex = 0
+        this.$store.state.currentSong = this.$store.state.playList[this.$store.state.currentIndex]
       }
     },
     mounted() {
