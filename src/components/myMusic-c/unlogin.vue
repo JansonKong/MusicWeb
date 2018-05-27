@@ -72,6 +72,7 @@ export default {
 		return{
 			dialogVisible:false,
 			activeName:'first',
+			isLogin:'',
 			formLabelWidth: '40px',
 			form:{
 
@@ -111,12 +112,17 @@ export default {
 		}
 	},
 
-	methods: {
+	methods: 
+	{
+	   handleClick(tab, event) {
+        console.log(tab, event);
+        } ,
 		handleClose(done) {
         		this.$refs.ruleForm.resetFields();	
         		done();
                this.activeName='first';
         },
+       
 		login:function(form){
             
              this.axios.get('http://localhost:8080/MusicWeb/user/checkUserIDExisted',{
@@ -137,11 +143,10 @@ export default {
                          this.$router.push({path:'/myMusicInfo'});
                         // this.$store.commit('', )
                         this.$store.state.isLogin=true;
-                    
- this.$store.state.user.userName=form.name;
- this.$store.state.user.userId=form.id;
-
-
+                        this.isLogin= this.$store.state.isLogin;
+						 this.$store.state.user.userId=form.id;
+                          this.$root.Bus.$emit('login','isLogin')
+                          
              		}
              		else {
              			this.$alert('密码不正确', '提示', {

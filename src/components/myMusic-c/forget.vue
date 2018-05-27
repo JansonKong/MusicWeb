@@ -22,31 +22,36 @@
 			<find-password1  style="margin-top: 100px;"></find-password1>
 		     </div>
 		     <div style="margin-bottom: 10px" >
-			<el-button @click="next">下一步</el-button>
+          <el-button style="margin-top: 12px;" @click="backStep">上一步</el-button>
+			   <el-button style="margin-top: 12px;" @click="nextStep">下一步</el-button>
 		    </div>
 		</div>
 		</template>
-		<template v-else-if="active=== 1" ><div>
+		<template v-else-if="active=== 1" >
+      <div>
 			<find-password2 style="margin-top: 100px;"></find-password2>
-			<el-button style="margin-top: 12px;" @click="next">下一步</el-button></div>
+      <el-button style="margin-top: 12px;" @click="backStep">上一步</el-button>
+			<el-button style="margin-top: 12px;" @click="nextStep">下一步</el-button>
+    </div>
 		</template>
 		<template v-else-if="active=== 2">
 			<div>
 			<find-password3 style="margin-top: 100px"></find-password3>
-
-			<el-button style="margin-top: 12px;" @click="nextInfo">下一步</el-button></div>
+        <el-button style="margin-top: 12px;" @click="backStep">上一步</el-button>
+			<el-button  @click="nextStep">下一步</el-button>
+    </div>
 		</template>
-		<!-- <template v-else-if="active=== 3">
-			<div> -->
-			<el-dialog width="30%":visible.sync="dialogVisible" >
+		 <template v-else-if="active=== 3">
+			<div> 
+	<!-- 		<el-dialog width="30%":visible.sync="dialogVisible" >
                  <span >找回密码成功！</span>
-                   <div slot="footer" class="dialog-footer">
-				<el-button small @click="back">进入我的音乐</el-button>
-			</div>
-		    </el-dialog>
+                <div slot="footer" class="dialog-footer">
 			
-		<!--	</div>
-		 </template> -->
+			</div>
+		    </el-dialog> -->
+			 <el-button  style="margin-top: 12px;" @click="back">进入我的音乐</el-button>
+    </div>
+		 </template> 
 	
 	</div>
 	
@@ -63,22 +68,33 @@ import findPassword3 from './findPassword3';
   export default {
   	components:{
   		findPassword1,
-		findPassword2,
+		  findPassword2,
         findPassword3
   	},
     data() {
       return {
         active: 0,
-        dialogVisible:false
+        //dialogVisible:false
       };
     },
 
     methods: {
-      next() {
-        if (this.active++ > 2) this.active = 0;
+      backStep(){
+       if(this.active--<=0) 
+        this.active=0;
+
+      },
+      nextStep() {
+        if (this.active++ > 2) 
+          this.active = 0;
+        console.log(findPassword1.ruleForm);
       },
       nextInfo(){
-         this.dialogVisible=true;
+          this.$alert('找回密码成功！', '提示', {
+                confirmButtonText: '确定',
+                type: 'success',
+                center:true
+              });
       },
       back(){
       	 this.$router.push({path: '/unlogin'})
@@ -120,5 +136,6 @@ import findPassword3 from './findPassword3';
   	margin-top:10%;
   	margin-bottom:10%
   }
+
 }
 </style>
