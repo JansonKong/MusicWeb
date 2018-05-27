@@ -21,5 +21,11 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  data(){
+  	return{
+  		Bus:new Vue(),
+      Bus2:new Vue()
+  	}
+  }
 })
