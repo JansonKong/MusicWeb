@@ -71,13 +71,25 @@
             </div>
           </div>
         </div>
+
+
+
         <div class="header__opt">
           <span class="mod_top_login">
-            <img class="avatar" v-show='isLogin?true:false'
-              src="https://p.qpic.cn/music_cover/Q5MtyhqyicZRIFMHk9v3tflKkLNRVG0opUMd0rm0Oe6U3iam0Es6pd3Q/300?n=1" alt="">
-            <a href="#" class="top_login__link js_login" @click="login" v-show='isLogin?false:true'>登录</a>
-          </span>
-        </div>
+            <el-dropdown @command="exit">
+            <span class="el-dropdown-link">
+              <img class="avatar" v-show="iconShow"
+              src="https://p.qpic.cn/music_cover/Q5MtyhqyicZRIFMHk9v3tflKkLNRVG0opUMd0rm0Oe6U3iam0Es6pd3Q/300?n=1" alt=""><i class=" el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command='a'>退出</el-dropdown-item>
+
+            </el-dropdown-menu>
+          </el-dropdown>
+          
+
+        </span>
+      </div>
       </div>
     </div>
   </div>
@@ -91,12 +103,15 @@ import {mapActions, mapState} from 'vuex'
         drop: false,
         keyword: '',
         isLogin: false,
-        mod_top_subnavIsShow: true
+        mod_top_subnavIsShow: true,
+        iconShow:false
       }
     },
     mounted () {
       console.log(this.$route.path)
       console.log(this.$store.state)
+      this.$root.Bus.$on('login',()=>{this.iconShow='isLogin'})
+
     },
     computed: {
       linkIndex () {
@@ -126,13 +141,20 @@ import {mapActions, mapState} from 'vuex'
       dropmenu: function () {
         this.drop = true
       },
-      login: function() {
-        console.log(!this.$store.state.isLogin)
-        this.isLogin =!this.$store.state.isLogin
-      },
+    
       changeMod_top_subnavIsShow: function(){
-        console.log('change')
+      
         this.mod_top_subnavIsShow = !this.mod_top_subnavIsShow
+      },
+      exit:function(command){
+           if(command=='a'){
+            this.iconShow=false;
+             this.$store.state.isLogin=false;
+             this.isLogin=  this.$store.state.isLogin;
+             console.log(this.isLogin);
+              this.$root.Bus2.$emit('exit','isLogin')
+
+        }
       }
     }
   }
@@ -140,4 +162,11 @@ import {mapActions, mapState} from 'vuex'
 
 <style lang="css" scoped>
   @import "./style/header.css";
+    .el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+  }
+   .el-icon-arrow-down {
+    font-size: 12px;
+  }
 </style>
