@@ -17,6 +17,7 @@ const state = {
   currentIndex: -1,
   fullScreen: false,
   serverUrl: "http://localhost:8080/MusicWeb",
+  forgetID:'',
   currentSong: {
     // songID: 1,
     // songName: "Welcome To New York",
