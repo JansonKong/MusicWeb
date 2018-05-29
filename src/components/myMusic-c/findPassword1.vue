@@ -1,10 +1,11 @@
 <template>
-	<div class="email" >
+	<div   >
 		<el-form :model="ruleForm":rules="rules" label-width="60px" style="margin-right:25% ;margin-left:25%  ">
-			<el-form-item v-model="ruleForm.enail" label ="邮箱" prop="email" >
-			<el-input placeholder="请输入邮箱"  icon="search" >
+			<el-form-item  label ="邮箱" prop="id" >
+			<el-input  type="text" v-model="ruleForm.id" placeholder="请输入邮箱"  >
 			</el-input>
-      	</el-form-item>
+      </el-form-item>  
+      
 		</el-form>
 	</div>
 </template>
@@ -12,19 +13,17 @@
 	 export default {
     data() {
       return {
+       
         ruleForm: {
-   				email:''
+   				id:''
         },
         rules: {
-          email: [
-            { required: true, message: '请输入邮箱', trigger: 'blur' },
-          ]
-        
+        id:[
+        { required: true, message: '请输入邮箱', trigger: 'blur'},
+        { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+        ]
         }
       };
-    },
-    methods: {
-    
     }
   }
 </script>

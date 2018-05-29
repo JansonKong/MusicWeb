@@ -145,6 +145,7 @@ export default {
                         this.$store.state.isLogin=true;
                         this.isLogin= this.$store.state.isLogin;
 						 this.$store.state.user.userId=form.id;
+						
                           this.$root.Bus.$emit('login','isLogin')
                           
              		}
